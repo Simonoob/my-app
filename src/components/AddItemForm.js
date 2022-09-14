@@ -1,9 +1,7 @@
 const AddItemForm = () => {
 	return (
-		<form>
-			<legend className="text-lg mb-4 font-semibold">
-				Add new Products
-			</legend>
+		<div>
+			<h2 className="text-lg mb-4 font-bold">Add new Products</h2>
 			<div className="flex w-full justify-between gap-x-6">
 				<input
 					type="text"
@@ -17,7 +15,7 @@ const AddItemForm = () => {
 				/>
 				<button className="btn btn-outline">Add</button>
 			</div>
-		</form>
+		</div>
 	)
 }
 
