@@ -1,9 +1,13 @@
+import AddItemForm from './AddItemForm'
+import Header from './Header'
+import ShoppingCartTable from './ShoppingCartTable'
+
 function App() {
 	return (
-		<main>
-			<header className="grid items-center justify-center grid-flow-row min-h-screen w-screen">
-				<h1 className="btn btn-primary">Setup</h1>
-			</header>
+		<main className="py-10 max-w-5xl mx-auto grid gap-y-32">
+			<Header />
+			<ShoppingCartTable />
+			<AddItemForm />
 		</main>
 	)
 }
