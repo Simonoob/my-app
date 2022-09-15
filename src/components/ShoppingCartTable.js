@@ -1,5 +1,6 @@
 import { useAtom } from 'jotai'
 import { shoppingCartItemsAtom } from '../state/atoms'
+import ModifyItemModal from './ModifyItemModal'
 
 const ShoppingCartTable = () => {
 	const [cartItems, setCartItems] = useAtom(shoppingCartItemsAtom)
@@ -16,20 +17,24 @@ const ShoppingCartTable = () => {
 				</thead>
 
 				<tbody>
-					{!!cartItems ? (
+					{!!cartItems.length ? (
 						cartItems.map(item => (
 							<tr key={item.name}>
-								<td>{item.name}</td>
-								<td className="text-center">{item.amount}</td>
-								<td className="text-center">
+								<td className="w-2/3 max-w-xs overflow-hidden text-ellipsis">
+									{item.name}
+								</td>
+								<td className="text-center w-1/3">
+									{item.amount}
+								</td>
+								<td className="text-center w-1/3 grid gap-y-2">
+									<ModifyItemModal item={item} />
 									<button
 										className="btn btn-error btn-sm"
 										onClick={() =>
 											setCartItems(prevItems =>
 												prevItems.filter(
 													prevItem =>
-														prevItem.name !==
-														item.name,
+														prevItem !== item,
 												),
 											)
 										}
@@ -41,7 +46,10 @@ const ShoppingCartTable = () => {
 						))
 					) : (
 						<tr>
-							<td>Such empty 😿</td>
+							<td>
+								No products available 😔
+								<br /> Add items via the form below 🛒
+							</td>
 						</tr>
 					)}
 				</tbody>
